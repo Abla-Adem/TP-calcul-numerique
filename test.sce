@@ -198,13 +198,13 @@ function [err_ar1,err_ar,err,err1] = TestExo6_2(a,c)
         a=rand(n,n);
         cnd(i)=cond(a);
         [L1,U1]=lu(a)
-        [L,U]=Mylu1(a,n)        
+        [P,L,U]=Mylu1(a,n)        
         
         
         err_ar1(i)=norm(L1*U1-a)/norm(a);
         err1(i)=cnd(i)*err_ar1(i);
         
-        err_ar(i)=norm(L*U-a)/norm(a);
+        err_ar(i)=norm(P*L*U-a)/norm(a);
         err(i)=cnd(i)*err_ar(i);
         n=n+10
      end  

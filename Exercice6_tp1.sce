@@ -9,7 +9,18 @@ function [L,U] = Mylu2(A,n)
    L=tril(A,-1)+eye(n,n)
    U=triu(A)
 endfunction
-function [P,A,z,t] = pivot(A,n)
+function [P,L,U] = Mylu1(A,n)
+    [P,A]=pivot(A,n)
+    for k=1:n-1
+            A(k+1:n,k)=A(k+1:n,k)/A(k,k)
+            A(k+1:n,k+1:n)=A(k+1:n,k+1:n)-A(k+1:n,k)*A(k,k+1:n);
+         
+    end
+   L=tril(A,-1)+eye(n,n)
+   U=triu(A)
+endfunction
+
+function [P,A] = pivot(A,n)
     P=zeros(n,n)
     t=[1:n]
     tem=0
