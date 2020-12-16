@@ -216,3 +216,26 @@ function [err_ar1,err_ar,err,err1] = TestExo6_2(a,c)
     legends(['erreur LU';'erreur LU_scilab'],[2 ,4],opt='lr')
 
 endfunction
+
+function [t,t1,t2,t3]=TestExo6_tp3(n_a,n)
+[A]=trimat(10);
+x=zeros(n)
+b=A*rand(10,1)
+
+
+
+t=zeros(1,n);
+t1=zeros(1,n);
+eps=5
+
+for i=1:n
+    x(i)=
+    [x1,t(i),e]=jacobi(A,10,b,eps*10^(-i))
+    [x1,t1(i),e]=gaus_seidel(A,10,b,eps*10^(-i))    
+end
+
+t=t';t1=t1';
+plot2d(x,[t t1],style=[4,2]);
+legends(['jacobi';'gauss_seidel'],[4,2],opt='lr')
+
+endfunction
