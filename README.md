@@ -9,5 +9,5 @@ pour faire les Test veuillez regarder le fichier test ou:
   pour la serie 2 on a les fichier:  
     -Exercice4_TP3 on a plusieur argument dans le makefile pour faire varier le nombre de ligne et de colonne(c,l) la valeur a partir de laquel on genere la valeur aleatoire (a) type pour definir le type d'operation  
     -LU pour l'exercice 5  
-    -Exercice6_tp3 pour tester la methode on la fonction TestExo6_tp3(a_n,n) ou a_n la taille de la matrice n le nombre de fois qu'on fait varier epsilon (entre 5 et 5*10^-n)
+    -Exercice6_tp3 pour tester la methode on la fonction TestExo6_tp3(a_n,n) qui se trouve dans test.sce ou a_n la taille de la matrice n le nombre de fois qu'on fait varier epsilon (entre 5 et 5*10^-n)
     
