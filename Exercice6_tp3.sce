@@ -14,7 +14,7 @@ function [x,test,r]=jacobi(A,n,b,eps)
     
     
     
-    M=-(triu(a,1)+tril(a,-1))
+    M=-(triu(A,1)+tril(A,-1))
     temp=diag(A)
     N=zeros(n,n)
     for i=1:n
