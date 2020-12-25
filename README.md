@@ -12,5 +12,10 @@ pour faire les Test veuillez regarder le fichier test ou:
     -LU pour l'exercice 5  
     -Exercice6_tp3 pour tester la methode on la fonction TestExo6_tp3(a_n,n) qui se trouve dans test.sce ou a_n la taille de la matrice n le nombre de fois qu'on fait varier epsilon (entre 5 et 5*10^-n) pour que la methode de gauss-seidel ou jacobi marche il faut:  
       -si la matrice  est symétrique définie positive1 ;  
-      -si A est à diagonale strictement dominante.
+      -si A est à diagonale strictement dominante.  
+pour jacobi en c dans le makefile on a:  
+  -alpha pour connaitre le savoir a partir de quelle valeur on fait varier les valeur de la matrice  
+  -c la taille de la matrice  
+  -il existe deux fonction test :une qui testes les convergnce et une qui teste les perf
+  -les fonction sont en commentaire sur le main(gauss-jacobi)
     
