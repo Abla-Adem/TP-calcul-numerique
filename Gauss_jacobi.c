@@ -203,13 +203,33 @@ void test_rdtsc_perf(double* A,double* AB,double* sol,double* b,double* resles,d
     cblas_dcopy(n,sol,1,t,1);
 
     unsigned long long d,f,s;
-    printf("n:perf \n");
+    printf("jacobi \n");
     double eps=0.5;
     for (int i = 0; i <10; i+=1) {
         s=0;
         d=rdtsc();
         for (int j = 0; j <40 ; ++j) {
-            jacobi(A,AB,sol,b,resles,n,eps,10000);
+            jacobi(A,AB,sol,b,resles,n,eps,100000000);
+
+            cblas_dcopy(n,t,1,sol,1);
+
+
+        }
+        f=rdtsc();
+        s=s+(f-d);
+        s=s/40;
+        printf("%llu,",eps,s);
+        eps=eps/10;
+
+
+    }
+    eps=0.5;
+    printf("\n Gauss-seidel \n");
+    for (int i = 0; i <10; i+=1) {
+        s=0;
+        d=rdtsc();
+        for (int j = 0; j <40 ; ++j) {
+            gauss_seidel(A,AB,sol,b,resles,n,eps,100000000);
 
             cblas_dcopy(n,t,1,sol,1);
 
@@ -224,20 +244,19 @@ void test_rdtsc_perf(double* A,double* AB,double* sol,double* b,double* resles,d
 
     }
 }
-void test_rdtsc_conv(double* A,double* AB,double* sol,double* b,double* resles,double* n)
+void test_rdtsc_conv(double* A,double* AB,double* b,double* resles,double* n)
 {
-    double* t;
+    double *t,*t1;
     t=allocation(n);
-    cblas_dcopy(n,sol,1,t,1);
+    t1=allocation(n);
 
     unsigned long long d,f,s;
-    printf("n:perf \n");
+
     double eps=0.000005;
-        s=gauss_seidel(A,AB,sol,b,resles,n,eps,1000000);
-        printf("gauss%llu",s);
-        cblas_dcopy(n,t,1,sol,1);
-        s=jacobi(A,AB,sol,b,resles,n,eps,1000000);
-        printf("jacobi %llu;",s);
+        s=gauss_seidel(A,AB,t,b,resles,n,eps,1000000);
+        printf("gauss %llu \n",s);
+        s=jacobi(A,AB,t1,b,resles,n,eps,1000000);
+        printf("jacobi %llu; \n",s);
 
 
     eps=eps/10;
@@ -258,15 +277,22 @@ int main(int argc, char *argv[]) {
     resles=allocation(itmax);
     b=allocation(n);
     sol=allocation(n);
+
     init(A,x,b,sol,n,a);
 
     AB=allocation(n*3);
     set_GB_operator_colMajor_poisson1D(AB,3,n,0);
     cblas_dgbmv(CblasColMajor,CblasNoTrans,n,n,1,1,1,AB,3,x,1,1,b,1);
-    //it=gauss_seidel(A,AB,sol,b,resles,n,epsilon,itmax);
+
+
+    it=gauss_seidel(A,AB,sol,b,resles,n,epsilon,itmax);
     //it=jacobi(A,AB,sol,b,resles,n,epsilon,itmax);
-    test_rdtsc_conv(A,AB,sol,b,resles,n);
-    //printf("%i ",it);
+
+
+    test_rdtsc_conv(A,AB,b,resles,n);
+    //test_rdtsc_perf(A,AB,sol,b,resles,n);
+    printf("nbr iteration: %i ",it);
+    //pour afficher le resultat direct vs iteration si on remplace le 1 par 0 on affichera la matrice aussi
     //print(A,x,b,n,n,1);
     //print(A,sol,b,n,n,1);
 
