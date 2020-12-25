@@ -25,7 +25,7 @@ function [err_a,err_ar,err,cnd] = TestExo2(a,c)
     err=err';
     plot2d(t,[err_a err_ar  ],style=[2,3]);
     legends(['erreur avant ';'erreur arriere '],[2 3],opt='lr')
-
+    
 endfunction
 
 
@@ -217,25 +217,23 @@ function [err_ar1,err_ar,err,err1] = TestExo6_2(a,c)
 
 endfunction
 
-function [t,t1,t2,t3]=TestExo6_tp3(n_a,n)
-[A]=trimat(10);
-x=zeros(n)
-b=A*rand(10,1)
+function [t,t1,t2,t3]=TestExo6_tp3_conv(n_a,eps,maxit)
+[A]=trimat(n_a);
+x=[1:maxit]
+b=A*rand(n_a,1)
 
 
 
-t=zeros(1,n);
-t1=zeros(1,n);
-eps=5
 
-for i=1:n
-    x(i)=
-    [x1,t(i),e]=jacobi(A,10,b,eps*10^(-i))
-    [x1,t1(i),e]=gaus_seidel(A,10,b,eps*10^(-i))    
-end
 
-t=t';t1=t1';
-plot2d(x,[t t1],style=[4,2]);
-legends(['jacobi';'gauss_seidel'],[4,2],opt='lr')
+
+    
+    [x1,z,t]=jacobi(A,n_a,b,eps,maxit)
+    [x1,z,t1]=gaus_seidel(A,n_a,b,eps,maxit)    
+
+x(1)=2
+t(3)=0
+plot2d(x,[log10(t) log10(t1)],style=[4,2]);
+    legends(['jacobi';'gauss-seidel'],[4 ,2],opt='ur')
 
 endfunction
