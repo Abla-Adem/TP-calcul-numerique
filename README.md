@@ -16,6 +16,6 @@ pour faire les Test veuillez regarder le fichier test ou:
 pour jacobi en c dans le makefile on a:  
   -alpha pour connaitre le savoir a partir de quelle valeur on fait varier les valeur de la matrice  
   -c la taille de la matrice  
-  -il existe deux fonction test :une qui testes les convergnce et une qui teste les perf
+  -il existe deux fonction test :une qui testes les convergnce et une qui teste les perf  
   -les fonction sont en commentaire sur le main(gauss-jacobi)
     
