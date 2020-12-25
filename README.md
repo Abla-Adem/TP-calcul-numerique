@@ -10,7 +10,7 @@ pour faire les Test veuillez regarder le fichier test ou:
     -lib_poisson1D.c avec les modification pour l'exercice 3  
     -Exercice4_TP3 on a plusieur argument dans le makefile pour faire varier le nombre de ligne et de colonne(c,l) la valeur a partir de laquel on genere la valeur aleatoire (a) type pour definir le type d'operation  
     -LU pour l'exercice 5  
-    -Exercice6_tp3 pour tester la methode on la fonction TestExo6_tp3(a_n,n) qui se trouve dans test.sce ou a_n la taille de la matrice n le nombre de fois qu'on fait varier epsilon (entre 5 et 5*10^-n) pour que la methode de gauss-seidel ou jacobi marche il faut:  
+    -Exercice6_tp3 pour tester la methode on la fonction TestExo6_tp3_conv(a_n,esp,maxit) qui se trouve dans test.sce ou a_n la taille de la matrice ,esp l'epsilon qu'on veut ateindre ,maxit le nombre max d'iteration pour que la methode de gauss-seidel ou jacobi marche il faut:  
       -si la matrice  est symétrique définie positive1 ;  
       -si A est à diagonale strictement dominante.  
 pour jacobi en c dans le makefile on a:  
